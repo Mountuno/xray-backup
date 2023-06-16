@@ -4,16 +4,6 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 echo "Welcome to V2Last Telegram Backup Helper."
-echo ""
-echo "__     ______  _              _     ____             _                "
-echo "\ \   / /___ \| |    __ _ ___| |_  | __ )  __ _  ___| | ___   _ _ __  "
-echo " \ \ / /  __) | |   / _` / __/ __/ ]  _/  / _` |/ __| |/ / | | | '_ \ "
-echo "  \ V /  / __/| |__| (_| \__ \ |_  ] |_) | (_| | (__|   <| |_| | |_) |"
-echo "   \_/  |_____|_____\__,_|___/\__| |____/ \__,_|\___|_|\_/___,_| .__/ "
-echo "                                                               |_|    "                                                               
-echo ""                                                                                                                              
-echo ""
-echo ""
 sleep 3
 echo "RUNNING THIS INSTALL SCRIPT WILL REMOVE YOUR PREVIOUS INSTALLATION OF THE SCRIPT"
 read -p "ARE YOU SURE YOU WANT TO PROCEED? (y/n): " confirmation
