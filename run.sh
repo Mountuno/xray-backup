@@ -58,4 +58,4 @@ echo "Creating crontab rules..."
 (crontab -u root -l ; echo "@hourly bash /opt/xray_backup.sh") | sort - | uniq - | crontab -
 
 echo "The script is installed successfully."
-echo "It will send you the backup files to you via Telegram at 12:00 PM every day."
+echo "It will send you the backup files to you via Telegram every hour."
