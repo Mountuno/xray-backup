@@ -34,7 +34,7 @@ path_sanaie="/etc/x-ui/"
 path_english="/etc/x-ui-english/"
 
 server_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
-text_date="$(date +"%Y-%m-%d")"
+text_date="$(TZ=Asia/Tehran date +"%D %T")"
 
 if [ -d "$path_sanaie" ]; then
     panel_type="Sanaie"
@@ -55,7 +55,7 @@ echo "$script" > /opt/xray_backup.sh
 chmod +x /opt/xray-backup.sh
 
 echo "Creating crontab rules..."
-(crontab -u root -l ; echo "0 12 * * * bash /opt/xray_backup.sh") | sort - | uniq - | crontab -
+(crontab -u root -l ; echo "@hourly bash /opt/xray_backup.sh") | sort - | uniq - | crontab -
 
 echo "The script is installed successfully."
 echo "It will send you the backup files to you via Telegram at 12:00 PM every day."
