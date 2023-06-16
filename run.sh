@@ -45,7 +45,7 @@ else
 fi
 
 if [ "$panel_type" == "Sanaie" ]; then
-    curl -X POST -H "content-type: multipart/form-data" -F caption="Server: $server_ip Date: $text_date" -F document=@"$path_english/x-ui.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
+    curl -X POST -H "content-type: multipart/form-data" -F caption="Server: $server_ip Date: $text_date" -F document=@"$path_sanaie/x-ui.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
 elif [ "$panel_type" == "English" ]; then
     curl -X POST -H "content-type: multipart/form-data" -F caption="Server: $server_ip Date: $text_date" -F document=@"$path_english/x-ui-english.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
 else
