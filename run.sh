@@ -26,8 +26,8 @@ read -p "Please enter your Telegram UserID: " setup_chatid
 touch /opt/xray_backup.sh
 script='#!/bin/bash
 
-token="$setup_token"
-chatid="$setup_chatid"
+token="'$setup_token'"
+chatid="'$setup_chatid'"
 
 path_sanaie="/etc/x-ui/"
 path_english="/etc/x-ui-english/"
