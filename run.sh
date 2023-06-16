@@ -10,6 +10,7 @@ read -p "ARE YOU SURE YOU WANT TO PROCEED? (y/n): " confirmation
 
 if [[ $confirmation == [Yy] ]]; then
     echo "Confirmed. Proceeding..."
+    rm -rf /opt/xray_backup.sh
     sleep 3
 else
     echo "Aborting installation. Exitting..."
@@ -51,9 +52,10 @@ else
     exit
 fi'
 echo "$script" > /opt/xray_backup.sh
+chmod +x /opt/xray-backup.sh
 
 echo "Creating crontab rules..."
-(crontab -u root -l ; echo "0 12 * * * ./opt/xray_backup.sh") | sort - | uniq - | crontab -
+(crontab -u root -l ; echo "0 12 * * * bash /opt/xray_backup.sh") | sort - | uniq - | crontab -
 
 echo "The script is installed successfully."
 echo "It will send you the backup files to you via Telegram at 12:00 PM every day."
