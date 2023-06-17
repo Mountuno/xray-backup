@@ -3,17 +3,17 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-echo "Welcome to V2Last Telegram Backup Helper."
+echo "Xray Backup Helper - Install Script"
 sleep 3
-echo "RUNNING THIS INSTALL SCRIPT WILL REMOVE YOUR PREVIOUS INSTALLATION OF THE SCRIPT"
+echo "RUNNING THIS WILL REMOVE YOUR PREVIOUS INSTALLATION OF THE SCRIPT"
 read -p "ARE YOU SURE YOU WANT TO PROCEED? (y/n): " confirmation
 
 if [[ $confirmation == [Yy] ]]; then
-    echo "Confirmed. Proceeding..."
+    echo "CONFIRMED. Proceeding..."
     rm -rf /opt/xray_backup.sh
     sleep 3
 else
-    echo "Aborting installation. Exitting..."
+    echo "ABORTING INSTALLATION. Exitting..."
     exit 3
 fi
 
@@ -45,9 +45,13 @@ else
 fi
 
 if [ "$panel_type" == "Sanaie" ]; then
-    curl -X POST -H "content-type: multipart/form-data" -F caption="Server: $server_ip Date: $text_date" -F document=@"$path_sanaie/x-ui.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
+    text="Date: $text_date - Panel Type: $panel_type - Server: $server_ip"
+    # url="$(printf %s "$text" | jq -s -R -r @uri)"
+    curl -X POST -H "content-type: multipart/form-data" -F caption="$text" -F document=@"$path_sanaie/x-ui.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
 elif [ "$panel_type" == "English" ]; then
-    curl -X POST -H "content-type: multipart/form-data" -F caption="Server: $server_ip Date: $text_date" -F document=@"$path_english/x-ui-english.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
+    text="Date: $text_date - Panel Type: $panel_type - Server: $server_ip"
+    # url="$(printf %s "$text" | jq -s -R -r @uri)"
+    curl -X POST -H "content-type: multipart/form-data" -F caption="$text" -F document=@"$path_english/x-ui-english.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
 else
     exit
 fi'
