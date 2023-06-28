@@ -21,12 +21,14 @@ echo "Installing necessary packages..."
 apt update && apt upgrade -y
 apt install curl -y
 
+read -p "Please choose a name for this server: " setup_name
 read -p "Please enter your Telegram Bot Token: " setup_token
 read -p "Please enter your Telegram UserID: " setup_chatid
 
 touch /opt/xray_backup.sh
 script='#!/bin/bash
 
+name="'$setup_name'"
 token="'$setup_token'"
 chatid="'$setup_chatid'"
 
@@ -45,12 +47,10 @@ else
 fi
 
 if [ "$panel_type" == "Sanaie" ]; then
-    text="Date: $text_date - Panel Type: $panel_type - Server: $server_ip"
-    # url="$(printf %s "$text" | jq -s -R -r @uri)"
+    text="Hostname: $name Date: $text_date - Panel Type: $panel_type - Server: $server_ip"
     curl -X POST -H "content-type: multipart/form-data" -F caption="$text" -F document=@"$path_sanaie/x-ui.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
 elif [ "$panel_type" == "English" ]; then
-    text="Date: $text_date - Panel Type: $panel_type - Server: $server_ip"
-    # url="$(printf %s "$text" | jq -s -R -r @uri)"
+    text="Hostname: $name Date: $text_date - Panel Type: $panel_type - Server: $server_ip"
     curl -X POST -H "content-type: multipart/form-data" -F caption="$text" -F document=@"$path_english/x-ui-english.db" -F chat_id=$chatid https://api.telegram.org/bot$token/sendDocument
 else
     exit
