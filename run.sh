@@ -56,7 +56,7 @@ else
     exit
 fi'
 echo "$script" > /opt/xray_backup.sh
-chmod +x /opt/xray-backup.sh
+chmod +x /opt/xray_backup.sh
 
 echo "Creating crontab rules..."
 (crontab -u root -l ; echo "@hourly bash /opt/xray_backup.sh") | sort - | uniq - | crontab -
